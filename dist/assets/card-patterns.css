@@ -1,0 +1,45 @@
+/* Music photo stacks: scoped to preserve page and dashboard layouts. */
+.music-stack{width:100%;min-width:0;isolation:isolate;padding:24px 0}
+.music-stack-stage{position:relative;height:380px;outline-offset:5px;border-radius:30px}
+.music-stack-group{position:absolute;inset:0;display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateX(25px) scale(.92);transition:transform .5s ease,opacity .4s ease,visibility .4s}
+.music-stack-group[data-active=true]{opacity:1;visibility:visible;transform:none}
+.music-stack-card{position:absolute;width:48%;height:82%;object-fit:cover;border-radius:18px;border:5px solid var(--bg,#fff8f5);box-shadow:0 14px 28px #27153630;transform:translateX(calc((var(--slot) - 1.5)*10%)) rotate(calc((var(--slot) - 1.5)*5deg));transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .4s;pointer-events:none}
+.music-stack-stage:is(:hover,:focus-visible) .music-stack-card{transform:translateX(calc((var(--slot) - 1.5)*29%)) translateY(calc((var(--slot) - 1.5)*-5px)) rotate(calc((var(--slot) - 1.5)*11deg));box-shadow:0 22px 36px #27153640}
+.music-stack-controls{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:18px}
+.music-stack-controls button{width:48px;height:48px;border:1px solid var(--coral);border-radius:50%;background:transparent;color:var(--coral);font-size:24px;cursor:pointer;transition:background .25s,transform .25s,color .25s}
+.music-stack-controls button:hover{background:var(--coral);color:#271536;transform:translateY(-3px)}
+.music-stack-controls span{font-size:12px;letter-spacing:2px;color:var(--muted)}
+.site-page .feature-card{transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease}
+.site-page .feature-card:hover{box-shadow:0 20px 42px #27153625;border-color:var(--coral)}
+.site-page .feature-card .visual{overflow:hidden}
+.site-page .feature-card .visual img{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s}
+.site-page .feature-card:hover .visual img{transform:scale(1.06) rotate(-1deg);filter:saturate(1.08)}
+.site-page .tile{transition:box-shadow .35s,transform .35s,border-color .35s}
+.site-page .tile:hover{transform:translateY(-5px);box-shadow:0 12px 28px #27153615;border-color:var(--coral)}
+@media(max-width:600px){.music-stack-stage{height:310px}.music-stack-card{width:45%;height:78%}.music-stack{padding:10px 0}}
+@media(prefers-reduced-motion:reduce){.music-stack *,.site-page .feature-card,.site-page .feature-card .visual img,.site-page .tile{transition:none!important}.music-stack-stage:is(:hover,:focus-visible) .music-stack-card{transform:translateX(calc((var(--slot) - 1.5)*10%)) rotate(calc((var(--slot) - 1.5)*5deg))}.site-page .tile:hover,.site-page .feature-card:hover .visual img{transform:none}}
+/* Layered performer cards, with room for the cutout to rise. */
+.music-stack-stage{height:420px;padding-top:40px}
+.music-pop-card{margin:0;padding:0;background:none;border:0;overflow:visible;pointer-events:auto;isolation:isolate;cursor:pointer;box-shadow:none;height:70%}
+.music-pop-card:before{content:'';position:absolute;inset:0;border-radius:18px;border:1px solid #ff746080;background:radial-gradient(ellipse at 50% 30%,#9d5060,transparent 65%),repeating-linear-gradient(110deg,transparent 0 24px,#ffffff06 24px 26px),#271536;box-shadow:0 14px 28px #27153630;transform-origin:bottom;transition:transform .55s,filter .55s}
+.music-pop-card img{position:relative;width:100%;height:100%;object-fit:contain;object-position:center bottom;border-radius:0;filter:drop-shadow(0 8px 8px #0004);transform-origin:bottom;transition:transform .55s,filter .55s;pointer-events:none}
+.music-pop-card figcaption{position:absolute;inset:auto 0 -24px;padding:10px 5px;border-radius:8px;background:#271536;color:#fff;font-size:14px;text-align:center;opacity:0;transform:perspective(500px) rotateX(-65deg);transform-origin:top;transition:transform .45s,opacity .45s;pointer-events:none}
+.music-stack-stage:is(:hover,:focus-within) .music-pop-card{transform:translateX(calc((var(--slot) - 1.5)*29%)) rotate(calc((var(--slot) - 1.5)*11deg));box-shadow:none}
+.music-stack-stage .music-pop-card:is(:hover,:focus-visible){z-index:10!important;outline:2px solid var(--coral);outline-offset:5px}
+.music-pop-card:is(:hover,:focus-visible):before{transform:perspective(600px) rotateX(24deg);filter:brightness(.65)}
+.music-pop-card:is(:hover,:focus-visible) img{transform:translateY(-22px) scale(1.14);filter:drop-shadow(0 18px 14px #0005)}
+.music-pop-card:is(:hover,:focus-visible) figcaption{opacity:1;transform:perspective(500px) rotateX(-12deg)}
+@media(max-width:600px){.music-stack-stage{height:340px}.music-pop-card figcaption{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.music-pop-card:before,.music-pop-card img,.music-pop-card figcaption{transition:none!important}.music-pop-card:is(:hover,:focus-visible) img,.music-pop-card:is(:hover,:focus-visible):before{transform:none}}
+/* Layered coral frames and pointer-responsive depth. */
+.music-pop-card{--depth-x:0deg;--depth-y:0deg;perspective:800px}
+.music-pop-card:after{content:'';position:absolute;inset:18px;border:3px solid #ff7460;border-left-color:transparent;border-radius:10px;pointer-events:none;z-index:2;transform:rotateX(var(--depth-x)) rotateY(var(--depth-y)) translateZ(22px);transition:transform .25s,border-color .3s;box-shadow:0 0 22px #ff74601a}
+.music-pop-card:nth-child(even):after{border-left-color:#ff7460;border-right-color:transparent;border-bottom-color:transparent}
+.music-pop-card img{z-index:3}
+.music-pop-card figcaption{z-index:4}
+.music-pop-card:is(:hover,:focus-visible):before{transform:rotateX(var(--depth-x)) rotateY(var(--depth-y)) rotateX(18deg);filter:brightness(.75);box-shadow:0 28px 34px #27153645,0 0 22px #ff746025}
+.music-pop-card:is(:hover,:focus-visible) img{transform:rotateX(var(--depth-x)) rotateY(var(--depth-y)) translateY(-22px) translateZ(35px) scale(1.12)}
+.site-page .feature-card:focus-within{border-color:var(--coral);box-shadow:0 12px 30px #ff746020}
+.site-page .feature-card .card-link{display:inline-block;transition:transform .3s ease}
+.site-page .feature-card:is(:hover,:focus-within) .card-link{transform:translateX(5px)}
+@media(prefers-reduced-motion:reduce){.music-pop-card:after,.music-pop-card:is(:hover,:focus-visible):before,.music-pop-card:is(:hover,:focus-visible) img{transform:none!important;transition:none!important}.site-page .feature-card .card-link{transition:none;transform:none!important}}

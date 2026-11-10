@@ -1,0 +1,30 @@
+
+/* Unified accessible brand, balanced layouts and subject-safe photography. */
+body .brand,body .utility-header .brand,body .simple-header .brand{background:transparent!important;box-shadow:none!important;border:0!important;padding:0!important;color:var(--ink)!important}
+body .brand-type strong{color:var(--ink)!important}body.dark .brand,body.dark .brand-type strong{color:#fff9f7!important}.brand-symbol{display:block;width:54px!important;height:54px!important;flex:0 0 54px;color:#271536;filter:none!important}body.dark .brand-symbol{color:#fff9f7}.brand-type small{color:#ff7460!important}
+.cta.photo-cta.backdrop-cta{min-height:440px!important;display:grid!important;grid-template-columns:1fr 1fr!important;padding:0!important;overflow:hidden;gap:0!important;background:#271536!important}
+.cta.backdrop-cta:after{display:none!important}.cta.backdrop-cta .cta-photo{position:relative!important;inset:auto!important;width:100%!important;height:100%!important;min-height:440px;margin:0!important;grid-column:2;grid-row:1;transform:none!important;border-radius:0!important;overflow:hidden}
+.cta.backdrop-cta .cta-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 25%!important;animation:none!important;transform:none!important;aspect-ratio:auto!important}
+.cta.backdrop-cta .cta-body{grid-column:1;grid-row:1;width:100%!important;max-width:none!important;padding:clamp(28px,4vw,64px)!important;align-self:center;background:transparent!important;backdrop-filter:none!important;border:0!important;margin:0!important}
+.cta.backdrop-1 .cta-photo{grid-column:1}.cta.backdrop-1 .cta-body{grid-column:2}.cta.backdrop-cta h2{font-size:clamp(28px,3vw,44px)!important;line-height:1.15!important}
+.photo-story .story-body{align-items:center!important;gap:clamp(28px,4vw,64px)!important}.photo-story .story-copy{min-width:0}.photo-story .story-copy h3,.photo-story blockquote{font-size:clamp(24px,2.4vw,36px)!important;line-height:1.3!important}.photo-story .story-copy p{font-size:17px!important;line-height:1.75!important}.photo-story .story-photo{align-self:stretch;min-height:330px}.photo-story .story-photo img{height:100%!important;max-height:480px;object-fit:cover;object-position:center 30%}.photo-story blockquote{padding-inline:24px!important;margin:0!important}
+.page-contact .contact-form{width:min(100%,960px)!important;max-width:960px!important;margin:28px auto 0!important}.page-contact iframe{filter:none!important;width:100%;border:0}.page-contact .form-grid{gap:20px!important}
+.login-page .login-stage{min-height:100svh;box-sizing:border-box;padding:20px}.login-page .login-panel{margin:auto;max-width:500px}.login-page .login-brand{margin-bottom:16px}.login-page .auth-form .input-wrap{margin-bottom:12px}.login-page .login-heading{margin-bottom:16px}
+@media(max-width:760px){.cta.photo-cta.backdrop-cta{grid-template-columns:1fr!important}.cta.backdrop-cta .cta-photo{grid-column:1!important;grid-row:1!important;min-height:260px!important;height:300px!important}.cta.backdrop-cta .cta-body{grid-column:1!important;grid-row:2!important}.photo-story .story-photo{min-height:260px}.login-page .login-stage{padding:12px}.login-page .login-panel{padding:24px!important}.login-page .login-heading h1{font-size:30px}}
+.page-contact section:has(.contact-form)>h2,.page-contact section:has(.contact-form)>.eyebrow,.page-contact section:has(.contact-form)>p{text-align:center;display:block;max-width:960px;margin-inline:auto}
+@media(max-height:740px){.login-page .login-panel{padding:18px 28px!important}.login-page .login-brand{margin-bottom:8px}.login-page .login-heading{margin-bottom:8px}.login-page .login-heading p{margin:4px 0}.login-page .auth-form label{margin:6px 0!important}.login-page .login-demo,.login-page .login-signup{margin:12px 0 0!important}}
+
+/* Consistent FAQ alignment and restrained interaction polish. */
+.faq,.faq.faq-style-1{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px!important;width:100%;min-width:0}
+.faq details{width:100%;min-width:0;box-sizing:border-box;margin:0!important;grid-column:1!important;align-self:start;transform:none!important}
+.faq summary{position:relative;min-height:48px;padding-inline-end:34px;line-height:1.5;gap:14px;overflow-wrap:anywhere}
+.faq summary .faq-number{flex:0 0 24px;align-self:center}
+.faq summary:after{position:absolute;inset-inline-end:0;top:50%;margin:0;transform:translateY(-50%);transition:transform .3s ease,color .25s ease}
+.faq details[open] summary:after{transform:translateY(-50%) rotate(180deg)}
+.faq details:hover,.faq details:focus-within{border-color:var(--coral);box-shadow:0 6px 20px #2715360d}
+.faq summary:focus-visible{outline:2px solid var(--coral);outline-offset:6px;border-radius:4px}
+.faq details[open] .faq-answer{animation:faq-reveal .35s ease both}
+.contact-phone svg{display:block;transition:transform .3s ease,color .3s ease}
+.footer address p:hover .contact-phone svg{color:var(--coral);transform:rotate(-12deg) scale(1.08)}
+@keyframes faq-reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.faq details,.faq summary:after,.contact-phone svg{transition:none!important}.faq details[open] .faq-answer{animation:none!important}.footer address p:hover .contact-phone svg{transform:none}}
